@@ -1,0 +1,11 @@
+.token-container{
+    background-color: beige;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:120px
+}
+

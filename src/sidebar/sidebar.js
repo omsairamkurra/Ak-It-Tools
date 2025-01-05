@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "./sidebar.css"; // Make sure this file exists for styling.
+import React from "react";
+import "./sidebar.css";
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import TokenIcon from '@mui/icons-material/Token';
 import TagIcon from '@mui/icons-material/Tag';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
@@ -16,13 +17,9 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import Looks3Icon from '@mui/icons-material/Looks3';
+import CloseIcon from '@mui/icons-material/Close';
 
-const Sidebar = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
+const Sidebar = ({ toggleSidebar, isDarkTheme, onItemClick }) => {
 
     const toggleDropdown = (id) => {
         const dropdown = document.getElementById(id);
@@ -32,27 +29,24 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="app">
-            {/* Hamburger Icon */}
-            <div className="hamburger" onClick={toggleSidebar}>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
+        <div className={`app ${isDarkTheme ? "dark-theme" : ""}`}>
             {/* Sidebar */}
-            <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+
+            <div>
+                <div className="cancel-button" onClick={toggleSidebar}>
+                    <CloseIcon />
+                </div>
                 <div class="tools-header">
                     <h3>AK-IT-Tools</h3>
                     <p>Handy tools for developers.</p>
                 </div>
                 <div class="container">
                     <div className="item" onClick={() => toggleDropdown('crypto-dropdown')}>
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Crypto</span>
                     </div>
                     <div id="crypto-dropdown" class="dropdown hidden">
-                        <div class="dropdown-item">
+                        <div class="dropdown-item" onClick={() => onItemClick("tokenGenerator")}>
                             <i class="icon">
                                 <TokenIcon />
                             </i>
@@ -124,7 +118,7 @@ const Sidebar = () => {
 
                     </div>
                     <div className="item" onClick={() => toggleDropdown('converter-dropdown')}>
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Converter</span>
                     </div>
                     <div id="converter-dropdown" class="dropdown hidden">
@@ -156,49 +150,42 @@ const Sidebar = () => {
                     </div>
 
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Web</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Images and Videos</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Development</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Network</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Math</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Measurement</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Text</span>
                     </div>
                     <div class="item">
-                        <span class="symbol">&gt;</span>
+                        <span class="symbol"><MenuOpenIcon /></span>
                         <span class="text">Data</span>
                     </div>
                 </div>
 
-                <div className="sidebar-footer">
+                <div class="sidebar-footer">
                     <h3>Ak-IT-Tools © 2025 Ram kurra</h3>
                 </div>
-
-            </div>
-
-            {/* Main Content */}
-            <div className="content">
-                <span>Welcome to the Website</span>
-                <p>Click the hamburger icon to open the sidebar.</p>
             </div>
         </div>
     );
