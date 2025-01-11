@@ -97,9 +97,17 @@ const TokenGenerator = () => {
 
             <div>
                 <Tooltip style={{ cursor: "pointer" }} title="copied...">
-                    <button onClick={() => navigator.clipboard.writeText(token)}>Copy</button>
+                    <button style={{ marginRight: "20px" }} onClick={() => navigator.clipboard.writeText(token)}>Copy</button>
                 </Tooltip>
-                <button style={{ cursor: "pointer" }} onClick={generateToken}>Refresh</button>
+                <button style={{ marginRight: "20px", cursor: "pointer" }} onClick={generateToken}>
+                    {token === "" ? "Generate Token" : "Regenerate Token"}
+                </button>
+                <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setToken("")} // Clear the token state
+                >
+                    Refresh
+                </button>
             </div>
         </div>
     );

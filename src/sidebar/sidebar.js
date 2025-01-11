@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import TokenIcon from '@mui/icons-material/Token';
 import TagIcon from '@mui/icons-material/Tag';
@@ -19,7 +20,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import Looks3Icon from '@mui/icons-material/Looks3';
 import CloseIcon from '@mui/icons-material/Close';
 
-const Sidebar = ({ toggleSidebar, isDarkTheme, onItemClick }) => {
+const Sidebar = ({ toggleSidebar, isDarkTheme }) => {
 
     const toggleDropdown = (id) => {
         const dropdown = document.getElementById(id);
@@ -46,12 +47,14 @@ const Sidebar = ({ toggleSidebar, isDarkTheme, onItemClick }) => {
                         <span class="text">Crypto</span>
                     </div>
                     <div id="crypto-dropdown" class="dropdown hidden">
-                        <div class="dropdown-item" onClick={() => onItemClick("tokenGenerator")}>
-                            <i class="icon">
-                                <TokenIcon />
-                            </i>
-                            <span>Token Generator</span>
-                        </div>
+                        <Link to="/token-generator" className="link">
+                            <div class="dropdown-item">
+                                <i class="icon">
+                                    <TokenIcon />
+                                </i>
+                                <span>Token Generator</span>
+                            </div>
+                        </Link>
                         <div class="dropdown-item">
                             <i class="icon">
                                 <TagIcon />
